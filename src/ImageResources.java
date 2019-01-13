@@ -27,7 +27,6 @@ public class ImageResources {
 	 public static final ImageIcon highscores   = new ImageIcon("HighScores.png");
 	 public static final ImageIcon title        = new ImageIcon("Title.png");
 
-	 public static Image background;
 	 public static Image star_small;
 	 public static Image star_medium;
 	 public static Image star_large;
@@ -43,7 +42,6 @@ public class ImageResources {
 	 */
 	public static void loadImages(){
 		try {
-			background = ImageIO.read(new File("background.png"));
 			star_small = ImageIO.read(new File("small_star.png"));
 			star_medium = ImageIO.read(new File("medium_star.png"));
 			star_large = ImageIO.read(new File("large_star.png"));
