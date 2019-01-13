@@ -235,8 +235,7 @@ public class Game implements KeyListener{
 	}
 	
 	/**
-	 * Pauses thread until lock has notify all called and
-	 * paused is set to false.
+	 * Pauses thread until frame has taken the minimum amount of time.
 	 */
 	private void pause(){
 		long currentTime = System.currentTimeMillis();
