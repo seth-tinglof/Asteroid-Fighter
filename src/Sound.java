@@ -13,25 +13,6 @@ public class Sound implements Runnable{              //allows music to be contro
 
     public static final int MUSIC_VOLUME = -20;
     public static final int SHOT_VOLUME = -15;
-	/**
-     * plays sound for an enemy being hit.
-     */
-    public static void enemyHit()
-    {
-        try
-        {
-            Clip clip;
-            File file;
-            AudioInputStream audioInput; 
-            file = new File("EnemyDie.wav");
-            audioInput = AudioSystem.getAudioInputStream(file);        //creates audio input stream from the audio file
-            clip = AudioSystem.getClip();                              //creates audio clip
-            clip.open(audioInput);      
-            clip.start();
-        }catch(LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-            System.out.println("Unable to play enemy death sound: " + e.getMessage());
-        }
-    }
 
     /**
      * plays sound for the player shooting.
