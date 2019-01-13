@@ -64,6 +64,7 @@ public class Window extends JFrame implements Runnable{
 		content = getContentPane();
 		setLayout(new BorderLayout());
 		content.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		setResizable(false);
 		pack();
 		setVisible(true);
 	}
