@@ -1,7 +1,5 @@
 package Game_Objects;
 
-import Game_Objects.Character;
-
 /**
  * Allows object to store a position as a double.
  * useful for simulating movement with double accuracy.
