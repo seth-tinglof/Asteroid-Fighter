@@ -1,4 +1,4 @@
-# Asteroid-Fighter
+# Asteroid Fighter
 A 2D spaceship battle game written in Java.
 Swing is used for the graphics and javax.sound.sampled is used for the audio. The file Sources.txt contains attribution information for audio and images.
 
