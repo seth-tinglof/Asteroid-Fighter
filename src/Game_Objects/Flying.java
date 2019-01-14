@@ -1,6 +1,5 @@
+package Game_Objects;
 
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
 
 /**
  * A flying entity with acceleration, drag, and gravity.
@@ -17,9 +16,11 @@ public abstract class Flying extends TrueCoordinates{
 	private double xVelocity;
 	private double yVelocity;
 	
-	int mass;
+	protected int mass;
 	
-	double dragAmount;						//The amount velocity is multiplied by because of drag.
+	protected double dragAmount;						//The amount velocity is multiplied by because of drag.
+
+	protected boolean repelOthers = false;              //Affects the interaction between this Flying and others in Collisions.
 
     /**
      * Creates a new Flying.
@@ -132,7 +133,7 @@ public abstract class Flying extends TrueCoordinates{
         /*Reverse direction of movement in reference frame where center of mass does not change.*/
 			this.setVelocity(-this.xVelocity, -this.yVelocity);
 			flying.setVelocity(-flying.xVelocity, -flying.yVelocity);
-			if (this instanceof Player || this instanceof Enemy) {
+			if (this.repelOthers || flying.repelOthers) {
 				this.accelerate(this.angle, .5);
 				flying.accelerate(flying.angle, .5);
 			}
@@ -143,7 +144,7 @@ public abstract class Flying extends TrueCoordinates{
 		this.shiftVelocity(-xShift, -yShift);
 		flying.shiftVelocity(-xShift, -yShift);
 
-		if (this instanceof Player || this instanceof Enemy && !successful_collision) {
+		if (this.repelOthers || flying.repelOthers && !successful_collision) {
 			double angle = Math.atan2(-flying.getTrueCenter()[1] + this.getTrueCenter()[1], flying.getTrueCenter()[0] - this.getTrueCenter()[0]);
 			this.accelerate(angle + Math.PI, .5);
 			flying.accelerate(angle, .5);

@@ -1,7 +1,9 @@
+package Asteroid_Fighter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 
@@ -11,30 +13,35 @@ import javax.swing.SwingUtilities;
  * @version 1.0
  */
 @SuppressWarnings("serial")
-public class Title extends ButtonPanel implements ActionListener{
+public class Instructions extends ButtonPanel implements ActionListener{
+
+	private JTextField text = new JTextField(1000);
+	String name;
 	
-	public Title(int width, int height){
-		title.setBounds(0, 0, width, height);
-		okayButton.setBounds(600, 600, 75, 50);
-		
+	public Instructions(int width, int height){
+		instructions.setBounds(0, 0, width, height);
+		text.setBounds(350, 500, 300, 30);
 		try {
 			SwingUtilities.invokeAndWait(new Runnable(){
 				@Override
 				public void run() {
-					add(okayButton);
-					add(title);
+					add(text);
+					add(instructions);
 					setVisible(true);
 				}	
 			});
 		} catch (InvocationTargetException | InterruptedException e) {}
-		okayButton.addActionListener(this);
+		text.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		setOpen(false);
-		synchronized(lock){
-			lock.notifyAll();
+		name = text.getText();
+		if(!name.trim().equals("")){
+			setOpen(false);
+			synchronized(lock){
+				lock.notifyAll();
+			}
 		}
 	}
 }

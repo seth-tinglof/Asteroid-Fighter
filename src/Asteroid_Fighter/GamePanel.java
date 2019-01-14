@@ -1,4 +1,6 @@
+package Asteroid_Fighter;
 
+import Game_Objects.Entity;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.lang.*;

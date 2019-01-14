@@ -1,4 +1,8 @@
+package Asteroid_Fighter;
 
+import Game_Objects.Sound;
+import Game_Objects.Flying;
+import Game_Objects.Util;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -20,11 +24,11 @@ public class Game implements KeyListener{
 	private long frames = 0;	//counts the total number of frames played.
 	private long lastTime;
 	private GamePanel panel;
-	private Window   window;
-	private Player   player;
+	private Window window;
+	private Player player;
 	private ArrayList<Debris> debris;
 	private ArrayList<Projectile> bullets;
-	private ArrayList<Enemy>	enemies;
+	private ArrayList<Enemy> enemies;
 	private long lastShot = -100;		//Stores the frame of the last time the player fired a projectile
 	private long lastHit = -100;		//Stores the frame of the last time the player was hit.
 	
@@ -185,7 +189,7 @@ public class Game implements KeyListener{
 		}
 	}
 
-	private void moveHelper(Flying flying,double angle, double force){
+	private void moveHelper(Flying flying, double angle, double force){
 	    flying.drag();
 	    flying.accelerate(angle, force);
 	    flying.move();

@@ -1,3 +1,6 @@
+package Asteroid_Fighter;
+
+import Game_Objects.Flying;
 
 import java.awt.Graphics2D;
 import java.awt.Image;

@@ -1,3 +1,4 @@
+package Asteroid_Fighter;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -10,7 +11,7 @@ import javax.swing.SwingUtilities;
 
 
 /**
- * Frame for Space Game.
+ * Frame for Space Asteroid_Fighter Game.
  * @author Seth Tinglof
  * @version 1.0
  */

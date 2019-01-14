@@ -1,3 +1,4 @@
+package Game_Objects;
 
 /**
  * A living character with health.

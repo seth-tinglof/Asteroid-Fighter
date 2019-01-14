@@ -1,3 +1,4 @@
+package Game_Objects;
 
 import java.awt.Image;
 

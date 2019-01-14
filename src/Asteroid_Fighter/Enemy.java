@@ -1,3 +1,6 @@
+package Asteroid_Fighter;
+
+import Game_Objects.Flying;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -28,6 +31,7 @@ public class Enemy extends Flying {
 		super(xPos, yPos);
 		hitBox = new Line2D[NUMBER_OF_POINTS];
 		mass = 500;
+		repelOthers = true;
 		setHealth(60);
 		dragAmount = .97;
 		color = ImageResources.randomColor();

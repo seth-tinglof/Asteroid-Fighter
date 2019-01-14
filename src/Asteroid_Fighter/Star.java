@@ -1,3 +1,8 @@
+package Asteroid_Fighter;
+
+import Game_Objects.Util;
+import Game_Objects.Entity;
+
 import java.awt.Image;
 
 /**
@@ -6,7 +11,7 @@ import java.awt.Image;
  * @author Seth Tinglof
  * @version 1.0
  */
-public class Star extends Entity{
+public class Star extends Entity {
 
     public static int SIDE_LENGTH = 30;
 

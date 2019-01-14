@@ -1,3 +1,6 @@
+package Asteroid_Fighter;
+
+import Game_Objects.Flying;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -9,7 +12,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Player character in Final Project.
- * extends Flying in order to move in according 
+ * extends Game_Objects.Flying in order to move in according
  * to Newtonian Mechanics.  Image for player
  * is drawn using geometry package and the drawing
  * is rotated based on the angle.
@@ -45,6 +48,7 @@ public class Player extends Flying {
 		dragAmount = .97;
 		hitBox = new Line2D[NUMBER_OF_POINTS];
 		mass = 1000;
+		repelOthers = true;
 		setHealth(100);
 	}
 

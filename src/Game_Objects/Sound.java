@@ -1,3 +1,4 @@
+package Game_Objects;
 
 import java.io.File;                //allows getting audio file.
 import java.io.IOException;

@@ -1,3 +1,6 @@
+package Game_Objects;
+
+import Game_Objects.Character;
 
 /**
  * Allows object to store a position as a double.
@@ -7,7 +10,7 @@
  * @version 1.0
  */
 
-public abstract class TrueCoordinates extends Character{
+public abstract class TrueCoordinates extends Character {
 
 	private double trueX;
 	private double trueY;

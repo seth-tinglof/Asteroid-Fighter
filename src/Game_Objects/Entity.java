@@ -1,3 +1,4 @@
+package Game_Objects;
 
 import java.awt.geom.Line2D;
 
@@ -12,7 +13,7 @@ public abstract class Entity implements Displayable
 	private int xPos;
 	private int yPos;
 
-	Line2D[] hitBox;
+	protected Line2D[] hitBox;
 	
 	private boolean shown;
 	private boolean active;

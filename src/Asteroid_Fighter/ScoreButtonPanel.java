@@ -1,3 +1,4 @@
+package Asteroid_Fighter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +9,7 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class ScoreButtonPanel extends ButtonPanel {
 	
-	ScorePanel panel;
+	private ScorePanel panel;
 	
 	public ScoreButtonPanel(String name, int score, int width, int height){
 		HighScore highScore = new HighScore(score, name);
