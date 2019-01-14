@@ -144,7 +144,7 @@ public abstract class Flying extends TrueCoordinates{
 		this.shiftVelocity(-xShift, -yShift);
 		flying.shiftVelocity(-xShift, -yShift);
 
-		if (this.repelOthers || flying.repelOthers && !successful_collision) {
+		if ((this.repelOthers || flying.repelOthers) && !successful_collision) {
 			double angle = Math.atan2(-flying.getTrueCenter()[1] + this.getTrueCenter()[1], flying.getTrueCenter()[0] - this.getTrueCenter()[0]);
 			this.accelerate(angle + Math.PI, .5);
 			flying.accelerate(angle, .5);
