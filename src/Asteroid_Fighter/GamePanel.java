@@ -1,19 +1,21 @@
 package Asteroid_Fighter;
 
 import Game_Objects.Entity;
-import java.awt.Color;
+
+import java.awt.Image;
 import java.awt.Graphics;
-import java.lang.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel{
     private final int X_STAR_INTERVAL = 160;
     private final int Y_STAR_INTERVAL = 180;
 
+    private Image drawBuffer;
     private int screenWidth, screenHeight;
 	private Player player;
 	
@@ -28,7 +30,6 @@ public class GamePanel extends JPanel{
 		populateBackground(screenWidth, screenHeight);
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
-		setBackground(Color.BLACK);
 	}
 	
 	public Player getPlayer(){
@@ -38,16 +39,26 @@ public class GamePanel extends JPanel{
 	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		int minX = player.getXPos() - screenWidth / 2 + player.WIDTH / 2;
-		int minY = player.getYPos() - screenHeight / 2 + player.HEIGHT / 2;
-        drawEntityList(g, stars, 0, 0);
-		g.drawImage(player.getImage(), screenWidth / 2 - player.WIDTH / 2, screenHeight / 2 - player.HEIGHT / 2, this);
-		drawEntityList(g, debris, minX, minY);
-		drawEntityList(g, enemies, minX, minY);
-		drawEntityList(g, bullets, minX, minY);
-		g.setColor(Color.RED);
-		g.drawString("Health: " + player.getHealth(), 50, 30);
+		g.drawImage(drawBuffer, 0, 0, this);
 	}
+
+	public void updateImage(){
+	    Image drawBuffer = createImage(getWidth(), getHeight());
+        Graphics g = drawBuffer.getGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        int minX = player.getXPos() - screenWidth / 2 + player.WIDTH / 2;
+        int minY = player.getYPos() - screenHeight / 2 + player.HEIGHT / 2;
+        drawEntityList(g, stars, 0, 0);
+        g.drawImage(player.getImage(), screenWidth / 2 - player.WIDTH / 2, screenHeight / 2 - player.HEIGHT / 2, this);
+        drawEntityList(g, debris, minX, minY);
+        drawEntityList(g, enemies, minX, minY);
+        drawEntityList(g, bullets, minX, minY);
+        g.setColor(Color.RED);
+        g.drawString("Health: " + player.getHealth(), 50, 30);
+        g.dispose();
+        this.drawBuffer = drawBuffer;
+    }
 
     /**
      * Sets the coordinates where the stars will be drawn

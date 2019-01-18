@@ -28,6 +28,7 @@ public class Projectile extends Flying {
 		super(xPos - WIDTH / 2, yPos - HEIGHT / 2);
 		mass = 1000;
 		this.frame = frame;
+		maxSpeed += SPEED;
 	}
 
 	public void drawProjectile(){

@@ -1,5 +1,6 @@
 package Asteroid_Fighter;
 
+import Game_Objects.Entity;
 import Game_Objects.Sound;
 import Game_Objects.Flying;
 import Game_Objects.Util;
@@ -86,6 +87,7 @@ public class Game implements KeyListener{
 		//panel.backgroundCoordinates();
 		panel.starCoordinates(player.getXPos(), player.getYPos());
 		player.drawPlayer();
+		panel.updateImage();
 		window.updateFrame();
 	}
 	
@@ -256,13 +258,7 @@ public class Game implements KeyListener{
 	 * Maintains a constant number of debris objects on the screen at all times. 
 	 */
 	private void fillDebris(){
-		/*removes debris too far from player */
-		for(int i = 0; i < debris.size(); i++){
-			if(player.distanceTo(debris.get(i)) >= MAX_PLAYER_RADIUS){
-				Util.replaceWithLast(debris, i);
-				i--;
-			}
-		}
+		removeFarEntities(debris);
 		
 		/*creates new debris objects to maintain number of debris displayed on screen*/
 		while(debris.size() < NUMBER_OF_DEBRIS){
@@ -289,13 +285,7 @@ public class Game implements KeyListener{
 	 * Maintains a constant number of enemies on the screen at all times
 	 */
 	private void fillEnemies(){
-		/*removes enemies too far from player*/
-		for(int i = 0; i < enemies.size(); i++){
-			if(player.distanceTo(enemies.get(i)) >= MAX_PLAYER_RADIUS){
-				Util.replaceWithLast(enemies, i);
-				i--;
-			}
-		}
+        removeFarEntities(enemies);
 		
 		/*removes dead enemies */
 		for(int i = 0; i < enemies.size(); i++){
@@ -316,6 +306,19 @@ public class Game implements KeyListener{
             enemies.get(enemies.size() - 1).updateHitBox();
 		}
 	}
+
+    /**
+     * Remove entities that are far from the player.
+     * @param list
+     */
+	private void removeFarEntities(ArrayList<? extends Entity> list){
+	    for (int i = 0; i < list.size(); i++){
+	        if(player.distanceTo(list.get(i)) >= MAX_PLAYER_RADIUS){
+	            Util.replaceWithLast(list, i);
+	            i--;
+            }
+        }
+    }
 
     /**
      * Gets some random coordinates that are off the screen. Useful for spawning objects out of player view.

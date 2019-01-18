@@ -71,12 +71,10 @@ public class Window extends JFrame implements Runnable{
 	}
 	
 	/**
-	 * Calls revalidate and repaint.
+	 * Repaints frame
 	 */
 	public void updateFrame(){
-	    try {
-            SwingUtilities.invokeAndWait(repaint);
-        }catch (InvocationTargetException | InterruptedException e){e.printStackTrace();}
+	    repaint();
 	}
 	
 	/**
@@ -142,21 +140,13 @@ public class Window extends JFrame implements Runnable{
                 @Override
                 public void run() {
                     add(panel, BorderLayout.CENTER);
+                    revalidate();
                 }
             });
 		} catch (InterruptedException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	private Runnable repaint = new Runnable(){
-		@Override
-		public void run() {
-			revalidate();
-			repaint();
-		}
-	};
 	
 	/**
 	 * Opens instruction screen.

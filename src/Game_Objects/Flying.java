@@ -9,7 +9,7 @@ package Game_Objects;
  */
 public abstract class Flying extends TrueCoordinates{
 
-    private double maxSpeed = 10;
+    protected double maxSpeed = 10;
 
 	private double angle = 0;
 
